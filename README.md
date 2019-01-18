@@ -1,2 +1,2 @@
 # Maze-Game-CS
-This is a randomized maze game
+This is a randomized maze game. Upon running the program, you will be shown a button to start the game. Once clicked, a preset maze will be randomly chosen and displayed within the GUI. Not only this, but 4 buttons (that control where you go in the maze) will also become visible and usable. The rest is self-explanatory, press the buttons to move in whichever direction you want, going through the maze, step by step. The objective is to make it to the end of the maze!
