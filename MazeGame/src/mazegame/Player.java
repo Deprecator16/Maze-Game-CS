@@ -13,7 +13,7 @@ import java.awt.*;
  */
 public class Player
 {
-   private Rectangle player;
+   private Rectangle player; //Rectangle that the user will control
    
    /** Offsets player position by x,y amount
     * 
@@ -51,7 +51,7 @@ public class Player
     */
    public Player()
    {
-       player = new Rectangle();
-       setSize(4);
+       player = new Rectangle(); //Create rectangle
+       setSize(4); //Set size of rectangle
    }
 }

@@ -14,43 +14,70 @@ import java.util.ArrayList;
  */
 public class Maze
 {
-    private ArrayList<Rectangle> walls;
-    private ArrayList<Rectangle> doors;
-    private int mazeWidth;
-    private int mazeLength;
-    private int wallWidth;
-    private int passWidth;
+    private ArrayList<Rectangle> walls; //List of all walls in the maze, including the border
+    private ArrayList<Rectangle> doors; //List of all doors between walls in the maze
+    private int mazeWidth; //Total width of maze
+    private int mazeLength; //Total length of maze
+    private int wallWidth; //Thickness of walls
+    private int passWidth; //Width of space between walls. Preferred to be the same size as wallWidth
     
+    /** Adds a wall to the maze
+     * 
+     * @param wall adds this rectangle to ArrayList of walls
+     */
     public void addWall(Rectangle wall)
     {
         
     }
     
+    /** Adds a door to the maze
+     * 
+     * @param door adds this rectangle to ArrayList of doors
+     */
     public void addDoor(Rectangle door)
     {
         
     }
     
+    /** Removes wall from ArrayList of walls
+     * 
+     * @param indexOfWall index of wall to remove
+     */
     public void removeWall(int indexOfWall)
     {
         
     }
     
+    /** Removes door from ArrayList of doors
+     * 
+     * @param indexOfDoor index of door to remove
+     */
     public void removeDoor(int indexOfDoor)
     {
         
     }
     
+    /** Get parameters of the wall at the given index
+     * 
+     * @param indexOfWall index of wall to get
+     */
     public void getWall(int indexOfWall)
     {
         
     }
     
+    /** Get parameters of the door at the given index
+     * 
+     * @param indexofDoor index of door to get
+     */
     public void getDoor(int indexofDoor)
     {
         
     }
     
+    /** Constructor
+     * 
+     */
     public Maze()
     {
         
