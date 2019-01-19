@@ -27,7 +27,7 @@ public class Maze
      */
     public void addWall(Rectangle wall)
     {
-        
+        walls.add(wall);
     }
     
     /** Adds a door to the maze
@@ -36,7 +36,7 @@ public class Maze
      */
     public void addDoor(Rectangle door)
     {
-        
+        doors.add(door);
     }
     
     /** Removes wall from ArrayList of walls
@@ -45,7 +45,7 @@ public class Maze
      */
     public void removeWall(int indexOfWall)
     {
-        
+        walls.remove(indexOfWall);
     }
     
     /** Removes door from ArrayList of doors
@@ -54,25 +54,25 @@ public class Maze
      */
     public void removeDoor(int indexOfDoor)
     {
-        
+        doors.remove(indexOfDoor);
     }
     
     /** Get parameters of the wall at the given index
      * 
      * @param indexOfWall index of wall to get
      */
-    public void getWall(int indexOfWall)
+    public Rectangle getWall(int indexOfWall)
     {
-        
+        return walls.get(indexOfWall);
     }
     
     /** Get parameters of the door at the given index
      * 
      * @param indexofDoor index of door to get
      */
-    public void getDoor(int indexofDoor)
+    public Rectangle getDoor(int indexofDoor)
     {
-        
+        return doors.get(indexofDoor);
     }
     
     /** Constructor
@@ -80,6 +80,11 @@ public class Maze
      */
     public Maze()
     {
-        
+        walls = new ArrayList();
+        doors = new ArrayList();
+        mazeWidth = 800;
+        mazeLength = 800;
+        wallWidth = 8;
+        passWidth = 8;
     }
 }
