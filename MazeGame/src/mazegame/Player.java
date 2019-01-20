@@ -37,6 +37,11 @@ public class Player
        player.y = y;
    }
    
+   public String getPos()
+   {
+       return Integer.toString(player.x) + ", " + Integer.toString(player.y);
+   }
+   
    /** Sets size of player
     * 
     * @param size size of player square
@@ -46,12 +51,22 @@ public class Player
        player.setSize(size, size);
    }
    
+   /** Returns the rectangle that the user controls
+    * 
+    * @return player rectangle
+    */
+   public Rectangle getPlayerRect()
+   {
+       return player;
+   }
+   
    /**
     * Constructor
     */
    public Player()
    {
        player = new Rectangle(); //Create rectangle
+       setPos(50, 50); //Set position of rectangle
        setSize(4); //Set size of rectangle
    }
 }

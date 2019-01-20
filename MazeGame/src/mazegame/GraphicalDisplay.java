@@ -55,5 +55,7 @@ public class GraphicalDisplay extends JFrame
         this.setTitle("A Random Maze Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        
+        rects = new ArrayList();
     }
 }

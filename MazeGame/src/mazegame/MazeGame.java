@@ -3,6 +3,7 @@
  */
 package mazegame;
 
+import java.awt.Rectangle;
 import javax.swing.JFrame;
 
 /**
@@ -15,14 +16,22 @@ public class MazeGame
     public static Maze curMaze = new Maze(); //Contains information of maze
     public static boolean isEnded = false; //True if game has ended
     public static boolean isClosing = false; //True if user wants to exit program
-    public static GraphicalDisplay g;
+    public static GraphicalDisplay graphics;
+    public static GUI gui;
+    public static KeyPresses key;
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
-        g = new GraphicalDisplay();
+        graphics = new GraphicalDisplay(); //Init graphics
+        gui = new GUI();
+        
+        Rectangle b1 = new Rectangle(100, 100, 200, 8);
+        
+        graphics.addRectangle(b1);
+        graphics.addRectangle(player.getPlayerRect()); //Add player rectangle to drawing
         
         //Run overarching program
         while (!isClosing)
@@ -47,17 +56,34 @@ public class MazeGame
      */
     public static void gameLoop()
     {
-        //Check for button press from GUI class
-        
+        key = gui.getKeyPress(); //Check for button press
         
         //Update player position
+        switch (key)
+        {
+            case UP: player.updatePos(0, 2); //Move player up 2 pixels
+            break;
+            
+            case DOWN: player.updatePos(0, -2); //Move player down 2 pixels
+            break;
+            
+            case LEFT: player.updatePos(-2, 0); //Move player left 2 pixels
+            break;
+            
+            case RIGHT: player.updatePos(2, 0); //Move player right 2 pixels
+            break;
+        }
         
+        System.out.println(player.getPos());
         
         //Check if player is at end
             //If so, end game
         
         
         //Otherwise, update collisions
+        
+        //Repaint
+        graphics.repaint();
     }
     
     /** Checks if player has collided with a wall and stops them from passing through it
