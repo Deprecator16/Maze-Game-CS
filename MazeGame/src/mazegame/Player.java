@@ -9,7 +9,7 @@ import java.awt.*;
 
 /**
  *
- * @author Bassil Virk
+ * @author Team Lime
  */
 public class Player
 {

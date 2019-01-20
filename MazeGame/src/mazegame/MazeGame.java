@@ -3,6 +3,10 @@
  */
 package mazegame;
 
+/**
+ * 
+ * @author Team Lime
+ */
 public class MazeGame
 {
     public static Player player = new Player();
