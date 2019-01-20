@@ -5,6 +5,9 @@ package mazegame;
 
 public class MazeGame
 {
+    public static Player player = new Player();
+    public static Maze curMaze = new Maze();
+    public static boolean isEnded = false;
 
     /**
      * @param args the command line arguments
@@ -14,4 +17,27 @@ public class MazeGame
         
     }
     
+    /** Runs entire game loop
+     * 
+     */
+    public static void gameLoop()
+    {
+        
+    }
+    
+    /** Checks if player has collided with a wall and stops them from passing through it
+     * 
+     */
+    public static void updateCollision()
+    {
+        
+    }
+    
+    /** Ends the game
+     * 
+     */
+    private static void endGame()
+    {
+        
+    }
 }
