@@ -16,21 +16,35 @@ public class Graphics
 {
     private ArrayList<Rectangle> rect;
     
+    /** Draws all shapes to the screen
+     * 
+     */
     public void draw()
     {
         
     }
     
+    /** Add a rectangle to the drawn rectangles
+     * 
+     * @param rect Rectangle to add
+     */
     public void addRectangle(Rectangle rect)
     {
         
     }
     
+    /** Remove a rectangle from the list of drawn rectangles
+     * 
+     * @param indexOfRect 
+     */
     public void removeRectangle(int indexOfRect)
     {
         
     }
     
+    /** Constructor
+     * 
+     */
     public Graphics()
     {
         
