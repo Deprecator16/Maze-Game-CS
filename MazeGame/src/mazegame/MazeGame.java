@@ -20,21 +20,24 @@ public class MazeGame
     public static GUI gui;
     public static KeyPresses key;
     
+    public static Rectangle b1;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws InterruptedException
     {
         graphics = new GraphicalDisplay(); //Init graphics
-        gui = new GUI();
+        gui = new GUI(); //Init GUI
         
-        Rectangle b1 = new Rectangle(100, 100, 200, 8); //Test rectangle
+        graphics.addKeyListener(gui); //Add key listener
         
-        graphics.addRectangle(b1);
+        b1 = new Rectangle(100, 100, 200, 8); //Test rectangle
+        
+        curMaze.addWall(b1); //Add wall to maze
+        
+        graphics.addRectangle(b1); //Add test rectangle to drawing
         graphics.addRectangle(player.getPlayerRect()); //Add player rectangle to drawing
-        
-        graphics.addKeyListener(gui);
-        graphics.createBufferStrategy(3); //Buffer images
         
         //Run overarching program
         while (!isClosing)
@@ -77,19 +80,40 @@ public class MazeGame
         //Check if player is at end
             //If so, end game
         
-        
-        //Otherwise, update collisions
-        
-        //Repaint
-        graphics.repaint();
+        updateCollisions(); //update collisions
+
+        graphics.repaint(); //Repaint
     }
     
     /** Checks if player has collided with a wall and stops them from passing through it
      * 
      */
-    public static void updateCollision()
+    public static void updateCollisions()
     {
-        
+        //Loop through all walls and check if player intersects with any
+        for (int index = 0; index < curMaze.getNumberOfWalls(); index++)
+        {
+            //If player intersects with wall
+            if (player.getPlayerRect().intersects(curMaze.getWall(index)))
+            {
+                //Move player back to original position before intersection
+                //This is done by moving the character in the opposite direction that the user did
+                switch (key)
+                {
+                    case UP: player.updatePos(0, 2); //Move player down 2 pixels
+                    break;
+
+                    case DOWN: player.updatePos(0, -2); //Move player up 2 pixels
+                    break;
+
+                    case LEFT: player.updatePos(2, 0); //Move player right 2 pixels
+                    break;
+
+                    case RIGHT: player.updatePos(-2, 0); //Move player left 2 pixels
+                    break;
+                }
+            }
+        }
     }
     
     /** Ends the game

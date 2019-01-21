@@ -57,6 +57,7 @@ public class GraphicalDisplay extends JFrame
         this.setTitle("A Random Maze Game"); //Set title of window
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Set operation on closing program
         this.setVisible(true); //Show window
+        this.createBufferStrategy(4); //Buffer images
         
         rects = new ArrayList(); //Initialize ArrayList
     }

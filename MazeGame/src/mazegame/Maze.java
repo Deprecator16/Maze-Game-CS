@@ -75,6 +75,15 @@ public class Maze
         return doors.get(indexofDoor);
     }
     
+    /** Get number of walls in maze
+     * 
+     * @return number of walls
+     */
+    public int getNumberOfWalls()
+    {
+        return walls.size();
+    }
+    
     /** Constructor
      * 
      */
