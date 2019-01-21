@@ -37,11 +37,6 @@ public class Player
        player.y = y;
    }
    
-   public String getPos()
-   {
-       return Integer.toString(player.x) + ", " + Integer.toString(player.y);
-   }
-   
    /** Sets size of player
     * 
     * @param size size of player square

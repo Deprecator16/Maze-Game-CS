@@ -16,15 +16,6 @@ public class GUI implements KeyListener
 {
     private KeyPresses keyPress = KeyPresses.NONE; //Data to return to MazeGame
     private int key = 0; //Gets keycode
-
-    /** Sets the value for the current key being pressed
-     * 
-     * @param key ID of key being pressed
-     */
-    private void setKeyPress(KeyPresses key)
-    {
-        keyPress = key;
-    }
     
     /** Returns the current key being pressed
      * 

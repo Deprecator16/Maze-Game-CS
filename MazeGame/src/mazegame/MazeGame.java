@@ -14,11 +14,11 @@ public class MazeGame
 {
     public static Player player = new Player(); //Controlled by user
     public static Maze curMaze = new Maze(); //Contains information of maze
-    public static boolean isEnded = false; //True if game has ended
-    public static boolean isClosing = false; //True if user wants to exit program
     public static GraphicalDisplay graphics;
     public static GUI gui;
     public static KeyPresses key;
+    public static boolean isEnded = false; //True if game has ended
+    public static boolean isClosing = false; //True if user wants to exit program
     
     public static Rectangle b1;
     
@@ -116,7 +116,15 @@ public class MazeGame
         }
     }
     
-    /** Ends the game
+    /** Chooses a maze from a set of mazes
+     * 
+     */
+    public static void chooseMaze()
+    {
+        
+    }
+    
+    /** Ends the current game
      * 
      */
     private static void endGame()
@@ -124,6 +132,9 @@ public class MazeGame
         isEnded = true;
     }
     
+    /** Ends the program
+     * 
+     */
     private static void endProgram()
     {
         isClosing = true;

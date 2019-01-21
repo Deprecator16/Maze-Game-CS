@@ -5,7 +5,7 @@
  */
 package mazegame;
 
-/**
+/** All possible key press outcomes
  *
  * @author Team Lime
  */
