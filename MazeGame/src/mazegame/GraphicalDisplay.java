@@ -20,8 +20,10 @@ public class GraphicalDisplay extends JFrame
     @Override
     public void paint(Graphics g)
     {
-        Graphics2D g2 = (Graphics2D)g;
+        super.paint(g);
+        Graphics2D g2 = (Graphics2D)g; //Cast Graphics to Graphics2D for extra functions
         
+        //Draw all rectangles inside of ArrayList rects
         for (int index = 0; index < rects.size(); index++)
         {
             g2.fill(rects.get(index));
@@ -51,11 +53,11 @@ public class GraphicalDisplay extends JFrame
      */
     public GraphicalDisplay()
     {
-        this.setSize(900, 900);
-        this.setTitle("A Random Maze Game");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
+        this.setSize(900, 900); //Set window size
+        this.setTitle("A Random Maze Game"); //Set title of window
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Set operation on closing program
+        this.setVisible(true); //Show window
         
-        rects = new ArrayList();
+        rects = new ArrayList(); //Initialize ArrayList
     }
 }

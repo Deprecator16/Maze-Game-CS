@@ -23,31 +23,31 @@ public class MazeGame
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         graphics = new GraphicalDisplay(); //Init graphics
         gui = new GUI();
         
-        Rectangle b1 = new Rectangle(100, 100, 200, 8);
+        Rectangle b1 = new Rectangle(100, 100, 200, 8); //Test rectangle
         
         graphics.addRectangle(b1);
         graphics.addRectangle(player.getPlayerRect()); //Add player rectangle to drawing
         
+        graphics.addKeyListener(gui);
+        graphics.createBufferStrategy(3); //Buffer images
+        
         //Run overarching program
         while (!isClosing)
-        {
+        {   
             //Display GUI
         
         
             //Run game loop
             while (!isEnded)
             {
-                gameLoop();
+                gameLoop(); //Run game loop
+                Thread.sleep(17); //Delay loop to approx. 60 executions per second
             }
-
-            //Display GUI
-            
-            
         }
     }
     
@@ -61,10 +61,10 @@ public class MazeGame
         //Update player position
         switch (key)
         {
-            case UP: player.updatePos(0, 2); //Move player up 2 pixels
+            case UP: player.updatePos(0, -2); //Move player up 2 pixels
             break;
             
-            case DOWN: player.updatePos(0, -2); //Move player down 2 pixels
+            case DOWN: player.updatePos(0, 2); //Move player down 2 pixels
             break;
             
             case LEFT: player.updatePos(-2, 0); //Move player left 2 pixels
@@ -73,8 +73,6 @@ public class MazeGame
             case RIGHT: player.updatePos(2, 0); //Move player right 2 pixels
             break;
         }
-        
-        System.out.println(player.getPos());
         
         //Check if player is at end
             //If so, end game

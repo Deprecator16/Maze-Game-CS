@@ -14,7 +14,8 @@ import java.awt.event.KeyListener;
  */
 public class GUI implements KeyListener
 {
-    private KeyPresses keyPress = KeyPresses.NONE;
+    private KeyPresses keyPress = KeyPresses.NONE; //Data to return to MazeGame
+    private int key = 0; //Gets keycode
 
     /** Sets the value for the current key being pressed
      * 
@@ -33,63 +34,56 @@ public class GUI implements KeyListener
     {
         return keyPress;
     }
-    
+
+    /** Unused
+     * 
+     * @param e 
+     */
     @Override
     public void keyTyped(KeyEvent e)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Unused
     }
 
+    /** Checks if key has been pressed and sets keyPress accordingly
+     * 
+     * @param e KeyEvent
+     */
     @Override
     public void keyPressed(KeyEvent e)
     {
-        if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W)
+        key = e.getKeyCode(); //Get keycode
+        
+        //Check what button has been pressed
+        if (key == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) //If UP or W key was pressed
         {
-            keyPress = KeyPresses.UP;
+            keyPress = KeyPresses.UP; //Set keyPress to UP
         }
         
-        if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S)
+        if (key == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) //If DOWN or S key was pressed
         {
-            keyPress = KeyPresses.DOWN;
+            keyPress = KeyPresses.DOWN; //Set keyPress to DOWN
         }
         
-        if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A)
+        if (key == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) //If LEFT or A key was pressed
         {
-            keyPress = KeyPresses.LEFT;
+            keyPress = KeyPresses.LEFT; //Set keyPress to LEFT
         }
         
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D)
+        if (key == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) //If RIGHT or D key was pressed
         {
-            keyPress = KeyPresses.RIGHT;
+            keyPress = KeyPresses.RIGHT; //Set keyPress to RIGHT
         }
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /** Checks if key has been released and updates keyPress accordingly
+     * 
+     * @param e 
+     */
     @Override
     public void keyReleased(KeyEvent e)
     {
-        if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W)
-        {
-            keyPress = KeyPresses.NONE;
-        }
-        
-        if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S)
-        {
-            keyPress = KeyPresses.NONE;
-        }
-        
-        if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A)
-        {
-            keyPress = KeyPresses.NONE;
-        }
-        
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D)
-        {
-            keyPress = KeyPresses.NONE;
-        }
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        keyPress = KeyPresses.NONE;
     }
     
     /** Constructor
