@@ -20,7 +20,10 @@ public class MazeGame
     public static boolean isEnded = false; //True if game has ended
     public static boolean isClosing = false; //True if user wants to exit program
     
-    public static Rectangle b1;
+    public static Rectangle bTop;
+    public static Rectangle bBottom;
+    public static Rectangle bLeft;
+    public static Rectangle bRight;
     
     /**
      * @param args the command line arguments
@@ -32,12 +35,21 @@ public class MazeGame
         
         graphics.addKeyListener(gui); //Add key listener
         
-        b1 = new Rectangle(100, 100, 200, 8); //Test rectangle
+        bTop = new Rectangle(4, 26, 392, 8); //Top border
+        bBottom = new Rectangle(4, 388, 392, 8); //Bottom border
+        bRight = new Rectangle(388, 34, 8, 354); //Right border
+        bLeft = new Rectangle(4, 34, 8, 354); //Left border
         
-        curMaze.addWall(b1); //Add wall to maze
+        curMaze.addWall(bTop); //Add top border to maze
+        curMaze.addWall(bBottom); //Add bottom border to maze
+        curMaze.addWall(bRight); //Add right border to maze
+        curMaze.addWall(bLeft); //Add left border to maze
         
-        graphics.addRectangle(b1); //Add test rectangle to drawing
         graphics.addRectangle(player.getPlayerRect()); //Add player rectangle to drawing
+        graphics.addRectangle(bTop); //Add test rectangle to drawing
+        graphics.addRectangle(bBottom); //Add test rectangle to drawing
+        graphics.addRectangle(bRight); //Add test rectangle to drawing
+        graphics.addRectangle(bLeft); //Add test rectangle to drawing
         
         //Run overarching program
         while (!isClosing)
@@ -65,15 +77,19 @@ public class MazeGame
         switch (key)
         {
             case UP: player.updatePos(0, -2); //Move player up 2 pixels
+            graphics.repaint(); //Repaint
             break;
             
             case DOWN: player.updatePos(0, 2); //Move player down 2 pixels
+            graphics.repaint(); //Repaint
             break;
             
             case LEFT: player.updatePos(-2, 0); //Move player left 2 pixels
+            graphics.repaint(); //Repaint
             break;
             
             case RIGHT: player.updatePos(2, 0); //Move player right 2 pixels
+            graphics.repaint(); //Repaint
             break;
         }
         

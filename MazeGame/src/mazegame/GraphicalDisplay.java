@@ -26,7 +26,17 @@ public class GraphicalDisplay extends JFrame
         //Draw all rectangles inside of ArrayList rects
         for (int index = 0; index < rects.size(); index++)
         {
-            g2.fill(rects.get(index));
+            //Draw player in different colour. Player should always be first element in array
+            if (index == 0)
+            {
+                g2.setColor(Color.red);
+                g2.fill(rects.get(index));
+            }
+            else
+            {
+                g2.setColor(Color.black);
+                g2.fill(rects.get(index));
+            }
         }
     }
     
@@ -53,7 +63,9 @@ public class GraphicalDisplay extends JFrame
      */
     public GraphicalDisplay()
     {
-        this.setSize(900, 900); //Set window size
+        this.setSize(400, 400); //Set window size
+        this.setBounds(0, 0, 400, 400);
+        this.setResizable(false);
         this.setTitle("A Random Maze Game"); //Set title of window
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Set operation on closing program
         this.setVisible(true); //Show window

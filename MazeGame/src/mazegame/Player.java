@@ -61,7 +61,7 @@ public class Player
    public Player()
    {
        player = new Rectangle(); //Create rectangle
-       setPos(50, 50); //Set position of rectangle
+       setPos(100, 100); //Set position of rectangle
        setSize(4); //Set size of rectangle
    }
 }
