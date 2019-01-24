@@ -6,8 +6,6 @@
 package mazegame;
 
 import java.awt.*;
-import java.awt.image.BufferStrategy;
-import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -16,39 +14,8 @@ import javax.swing.*;
  */
 public class GraphicalDisplay extends JFrame
 {
-    private ArrayList<Rectangle> rects;
-    private Graphics gBuffer;
-    private BufferStrategy buff;
-    
-    public void paint(Graphics g)
-    {
-        super.paint(g);
-        Graphics2D g2 = (Graphics2D)g; //Cast Graphics to Graphics2D for extra functions
-        gBuffer = (Graphics2D)gBuffer;
-        gBuffer = buff.getDrawGraphics();
-        
-        super.paint(gBuffer);
-        
-        gBuffer.clearRect(0, 0, 500, 500);
-        gBuffer.dispose();
-        
-        buff.show();
-        //Draw all rectangles inside of ArrayList rects
-        for (int index = 0; index < rects.size(); index++)
-        {
-            //Draw player in different colour. Player should always be first element in array
-            if (index == 0)
-            {
-                gBuffer.setColor(Color.red);
-                gBuffer.fillRect(rects.get(index).x, rects.get(index).y, rects.get(index).width, rects.get(index).height);
-            }
-            else
-            {
-                gBuffer.setColor(Color.black);
-                gBuffer.fillRect(rects.get(index).x, rects.get(index).y, rects.get(index).width, rects.get(index).height);
-            }
-        }
-    }
+    public Container pane;
+    public GraphicalUpdates gUpdates;
     
     /** Add a rectangle to the drawn rectangles
      * 
@@ -56,7 +23,7 @@ public class GraphicalDisplay extends JFrame
      */
     public void addRectangle(Rectangle rect)
     {
-        rects.add(rect);
+        gUpdates.addRectangle(rect);
     }
     
     /** Remove a rectangle from the list of drawn rectangles
@@ -65,7 +32,7 @@ public class GraphicalDisplay extends JFrame
      */
     public void removeRectangle(int indexOfRect)
     {
-        rects.remove(indexOfRect);
+        gUpdates.removeRectangle(indexOfRect);
     }
     
     /** Constructor
@@ -73,17 +40,17 @@ public class GraphicalDisplay extends JFrame
      */
     public GraphicalDisplay()
     {
-        this.setSize(400, 400); //Set window size
-        this.setBounds(0, 0, 400, 400);
+        super();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Set operation on closing program
+        this.setSize(406, 428); //Set window size
         this.setResizable(false);
         this.setTitle("A Random Maze Game"); //Set title of window
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Set operation on closing program
         this.setVisible(true); //Show window
         
-        this.createBufferStrategy(4); //Buffer images
-        buff = this.getBufferStrategy();
-        gBuffer = buff.getDrawGraphics();
+        pane = this.getContentPane();
+        pane.setLayout(new GridLayout(1, 1));
         
-        rects = new ArrayList(); //Initialize ArrayList
+        gUpdates = new GraphicalUpdates(400, 400);
+        pane.add(gUpdates);
     }
 }
