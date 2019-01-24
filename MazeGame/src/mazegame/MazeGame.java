@@ -77,19 +77,19 @@ public class MazeGame
         switch (key)
         {
             case UP: player.updatePos(0, -2); //Move player up 2 pixels
-            graphics.repaint(); //Repaint
+            //graphics.repaint(); //Repaint
             break;
             
             case DOWN: player.updatePos(0, 2); //Move player down 2 pixels
-            graphics.repaint(); //Repaint
+            //graphics.repaint(); //Repaint
             break;
             
             case LEFT: player.updatePos(-2, 0); //Move player left 2 pixels
-            graphics.repaint(); //Repaint
+            //graphics.repaint(); //Repaint
             break;
             
             case RIGHT: player.updatePos(2, 0); //Move player right 2 pixels
-            graphics.repaint(); //Repaint
+            //graphics.repaint(); //Repaint
             break;
         }
         

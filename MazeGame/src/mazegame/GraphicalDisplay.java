@@ -6,6 +6,7 @@
 package mazegame;
 
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -16,26 +17,35 @@ import javax.swing.*;
 public class GraphicalDisplay extends JFrame
 {
     private ArrayList<Rectangle> rects;
+    private Graphics gBuffer;
+    private BufferStrategy buff;
     
-    @Override
     public void paint(Graphics g)
     {
         super.paint(g);
         Graphics2D g2 = (Graphics2D)g; //Cast Graphics to Graphics2D for extra functions
+        gBuffer = (Graphics2D)gBuffer;
+        gBuffer = buff.getDrawGraphics();
         
+        super.paint(gBuffer);
+        
+        gBuffer.clearRect(0, 0, 500, 500);
+        gBuffer.dispose();
+        
+        buff.show();
         //Draw all rectangles inside of ArrayList rects
         for (int index = 0; index < rects.size(); index++)
         {
             //Draw player in different colour. Player should always be first element in array
             if (index == 0)
             {
-                g2.setColor(Color.red);
-                g2.fill(rects.get(index));
+                gBuffer.setColor(Color.red);
+                gBuffer.fillRect(rects.get(index).x, rects.get(index).y, rects.get(index).width, rects.get(index).height);
             }
             else
             {
-                g2.setColor(Color.black);
-                g2.fill(rects.get(index));
+                gBuffer.setColor(Color.black);
+                gBuffer.fillRect(rects.get(index).x, rects.get(index).y, rects.get(index).width, rects.get(index).height);
             }
         }
     }
@@ -69,7 +79,10 @@ public class GraphicalDisplay extends JFrame
         this.setTitle("A Random Maze Game"); //Set title of window
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Set operation on closing program
         this.setVisible(true); //Show window
+        
         this.createBufferStrategy(4); //Buffer images
+        buff = this.getBufferStrategy();
+        gBuffer = buff.getDrawGraphics();
         
         rects = new ArrayList(); //Initialize ArrayList
     }
