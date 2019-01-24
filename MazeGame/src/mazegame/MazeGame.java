@@ -33,12 +33,12 @@ public class MazeGame
         graphics = new GraphicalDisplay(); //Init graphics
         gui = new GUI(); //Init GUI
         
-        graphics.addKeyListener(gui); //Add key listener
+        graphics.gUpdates.addKeyListener(gui); //Add key listener
         
-        bTop = new Rectangle(4, 26, 392, 8); //Top border
-        bBottom = new Rectangle(4, 388, 392, 8); //Bottom border
-        bRight = new Rectangle(388, 34, 8, 354); //Right border
-        bLeft = new Rectangle(4, 34, 8, 354); //Left border
+        bTop = new Rectangle(0, 0, 400, 8); //Top border
+        bBottom = new Rectangle(0, 391, 400, 8); //Bottom border
+        bRight = new Rectangle(392, 8, 8, 383); //Right border
+        bLeft = new Rectangle(0, 8, 8, 383); //Left border
         
         curMaze.addWall(bTop); //Add top border to maze
         curMaze.addWall(bBottom); //Add bottom border to maze
@@ -77,19 +77,19 @@ public class MazeGame
         switch (key)
         {
             case UP: player.updatePos(0, -2); //Move player up 2 pixels
-            graphics.repaint(); //Repaint
+            //graphics.repaint(); //Repaint
             break;
             
             case DOWN: player.updatePos(0, 2); //Move player down 2 pixels
-            graphics.repaint(); //Repaint
+            //graphics.repaint(); //Repaint
             break;
             
             case LEFT: player.updatePos(-2, 0); //Move player left 2 pixels
-            graphics.repaint(); //Repaint
+            //graphics.repaint(); //Repaint
             break;
             
             case RIGHT: player.updatePos(2, 0); //Move player right 2 pixels
-            graphics.repaint(); //Repaint
+            //graphics.repaint(); //Repaint
             break;
         }
         
@@ -98,7 +98,7 @@ public class MazeGame
         
         updateCollisions(); //update collisions
 
-        graphics.repaint(); //Repaint
+        //graphics.repaint(); //Repaint
     }
     
     /** Checks if player has collided with a wall and stops them from passing through it
