@@ -24,6 +24,7 @@ public class MazeGame
     public static Rectangle bBottom;
     public static Rectangle bLeft;
     public static Rectangle bRight;
+    public static Rectangle endPoint;
     
     /**
      * @param args the command line arguments
@@ -35,6 +36,7 @@ public class MazeGame
         
         graphics.gUpdates.addKeyListener(gui); //Add key listener
         
+        endPoint = new Rectangle(200, 391, 8, 8); //End of maze
         bTop = new Rectangle(0, 0, 400, 8); //Top border
         bBottom = new Rectangle(0, 391, 400, 8); //Bottom border
         bRight = new Rectangle(392, 8, 8, 383); //Right border
@@ -44,8 +46,10 @@ public class MazeGame
         curMaze.addWall(bBottom); //Add bottom border to maze
         curMaze.addWall(bRight); //Add right border to maze
         curMaze.addWall(bLeft); //Add left border to maze
+        curMaze.addWall(endPoint);
         
-        graphics.addRectangle(player.getPlayerRect()); //Add player rectangle to drawing
+        graphics.gUpdates.addEndPoint(player.getPlayerRect()); //Add player rectangle to drawing
+        graphics.gUpdates.addEndPoint(endPoint);
         graphics.addRectangle(bTop); //Add test rectangle to drawing
         graphics.addRectangle(bBottom); //Add test rectangle to drawing
         graphics.addRectangle(bRight); //Add test rectangle to drawing
@@ -77,19 +81,15 @@ public class MazeGame
         switch (key)
         {
             case UP: player.updatePos(0, -2); //Move player up 2 pixels
-            //graphics.repaint(); //Repaint
             break;
             
             case DOWN: player.updatePos(0, 2); //Move player down 2 pixels
-            //graphics.repaint(); //Repaint
             break;
             
             case LEFT: player.updatePos(-2, 0); //Move player left 2 pixels
-            //graphics.repaint(); //Repaint
             break;
             
             case RIGHT: player.updatePos(2, 0); //Move player right 2 pixels
-            //graphics.repaint(); //Repaint
             break;
         }
         
@@ -97,8 +97,6 @@ public class MazeGame
             //If so, end game
         
         updateCollisions(); //update collisions
-
-        //graphics.repaint(); //Repaint
     }
     
     /** Checks if player has collided with a wall and stops them from passing through it
