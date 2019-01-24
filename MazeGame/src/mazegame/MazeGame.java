@@ -95,7 +95,10 @@ public class MazeGame
         
         //Check if player is at end
             //If so, end game
-        
+        if (player.getPlayerRect().intersects(endPoint)) 
+        { 
+            player.setPos(100, 100);
+        }
         updateCollisions(); //update collisions
     }
     
