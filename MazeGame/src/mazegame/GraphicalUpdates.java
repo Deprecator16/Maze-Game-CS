@@ -87,6 +87,12 @@ public class GraphicalUpdates extends Canvas implements Runnable
                     output2D.setColor(Color.red);
                     output2D.fillRect(rects.get(index).x, rects.get(index).y, rects.get(index).width, rects.get(index).height); //Draw Player
                 }
+                //Draw end point
+                else if (index == rects.size() - 1)
+                {
+                    output2D.setColor(Color.green);
+                    output2D.fillRect(rects.get(index).x, rects.get(index).y, rects.get(index).width, rects.get(index).height); //Draw end point
+                }
                 //Draw maze
                 else
                 {
@@ -121,7 +127,7 @@ public class GraphicalUpdates extends Canvas implements Runnable
      */
     public void addRectangle(Rectangle rect)
     {
-        rects.add(rect);
+        rects.add(rects.size() - 1, rect);
     }
     
     /** Remove a rectangle from the list of drawn rectangles
@@ -131,6 +137,15 @@ public class GraphicalUpdates extends Canvas implements Runnable
     public void removeRectangle(int indexOfRect)
     {
         rects.remove(indexOfRect);
+    }
+    
+    /** Adds the position of the endpoint of the maze
+     * 
+     * @param rect end point
+     */
+    public void addEndPoint(Rectangle rect)
+    {
+        rects.add(rect);
     }
     
     /** Constructor
