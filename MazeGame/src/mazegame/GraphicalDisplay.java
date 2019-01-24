@@ -52,5 +52,7 @@ public class GraphicalDisplay extends JFrame
         
         gUpdates = new GraphicalUpdates(400, 400);
         pane.add(gUpdates);
+        
+        gUpdates.requestFocus();
     }
 }

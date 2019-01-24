@@ -35,7 +35,6 @@ public class MazeGame
         gui = new GUI(); //Init GUI
         
         graphics.gUpdates.addKeyListener(gui); //Add key listener
-        graphics.gUpdates.requestFocus();
         
         endPoint = new Rectangle(200, 391, 8, 8); //End of maze
         bTop = new Rectangle(0, 0, 400, 8); //Top border
