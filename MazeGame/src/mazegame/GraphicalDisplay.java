@@ -1,39 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GraphicalDisplay.java
  */
 package mazegame;
 
 import java.awt.*;
 import javax.swing.*;
 
-/**
+/** Window to display graphics
  *
  * @author Team Lime
  */
 public class GraphicalDisplay extends JFrame
 {
-    public Container pane;
-    public GraphicalUpdates gUpdates;
-    
-    /** Add a rectangle to the drawn rectangles
-     * 
-     * @param rect Rectangle to add
-     */
-    public void addRectangle(Rectangle rect)
-    {
-        gUpdates.addRectangle(rect);
-    }
-    
-    /** Remove a rectangle from the list of drawn rectangles
-     * 
-     * @param indexOfRect 
-     */
-    public void removeRectangle(int indexOfRect)
-    {
-        gUpdates.removeRectangle(indexOfRect);
-    }
+    public Container pane; //Graphics is shown through this pane
+    public GraphicalUpdates gUpdates; //Graphics logic
     
     /** Constructor
      * 
@@ -41,18 +21,19 @@ public class GraphicalDisplay extends JFrame
     public GraphicalDisplay()
     {
         super();
+        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Set operation on closing program
         this.setSize(406, 428); //Set window size
-        this.setResizable(false);
+        this.setResizable(false); //Make sure window is not resized by user
         this.setTitle("A Random Maze Game"); //Set title of window
         this.setVisible(true); //Show window
         
-        pane = this.getContentPane();
-        pane.setLayout(new GridLayout(1, 1));
+        pane = this.getContentPane(); //Create pane to show images in window
+        pane.setLayout(new GridLayout(1, 1));  //Set layout of pane
         
-        gUpdates = new GraphicalUpdates(400, 400);
-        pane.add(gUpdates);
+        gUpdates = new GraphicalUpdates(400, 400); //Create graphics logic
+        pane.add(gUpdates); //Add graphics component to window
         
-        gUpdates.requestFocus();
+        gUpdates.requestFocus(); //Switch focus to game window
     }
 }

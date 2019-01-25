@@ -6,7 +6,7 @@ package mazegame;
 import java.awt.Rectangle;
 import javax.swing.JFrame;
 
-/**
+/** Overarching game class. Contains main()
  * 
  * @author Team Lime
  */
@@ -14,17 +14,17 @@ public class MazeGame
 {
     public static Player player = new Player(); //Controlled by user
     public static Maze curMaze = new Maze(); //Contains information of maze
-    public static GraphicalDisplay graphics;
-    public static GUI gui;
-    public static KeyPresses key;
+    public static GraphicalDisplay graphics; //Graphics and window
+    public static GUI gui; //GUI and user controls
+    public static KeyPresses key; //Gets current key press
     public static boolean isEnded = false; //True if game has ended
     public static boolean isClosing = false; //True if user wants to exit program
     
-    public static Rectangle bTop;
-    public static Rectangle bBottom;
-    public static Rectangle bLeft;
-    public static Rectangle bRight;
-    public static Rectangle endPoint;
+    public static Rectangle bTop; //Top border
+    public static Rectangle bBottom; //Bottom border
+    public static Rectangle bLeft; //Left border
+    public static Rectangle bRight; //Right border
+    public static Rectangle endPoint; //End of maze
     
     /**
      * @param args the command line arguments
@@ -46,14 +46,15 @@ public class MazeGame
         curMaze.addWall(bBottom); //Add bottom border to maze
         curMaze.addWall(bRight); //Add right border to maze
         curMaze.addWall(bLeft); //Add left border to maze
-        curMaze.addWall(endPoint);
+        curMaze.addWall(endPoint); //Add end point of maze
         
-        graphics.gUpdates.addEndPoint(player.getPlayerRect()); //Add player rectangle to drawing
-        graphics.gUpdates.addEndPoint(endPoint);
-        graphics.addRectangle(bTop); //Add test rectangle to drawing
-        graphics.addRectangle(bBottom); //Add test rectangle to drawing
-        graphics.addRectangle(bRight); //Add test rectangle to drawing
-        graphics.addRectangle(bLeft); //Add test rectangle to drawing
+        graphics.gUpdates.addPlayer(player.getPlayerRect()); //Player rectangle should always be first rectangle in array
+        graphics.gUpdates.addEndPoint(endPoint); //End point should always be last rectangle in array
+        
+        graphics.gUpdates.addRectangle(bTop); //Add top border to graphics. Inserted at one index before the endPoint/last index
+        graphics.gUpdates.addRectangle(bBottom); //Add bottom border to graphics. Inserted at one index before the endPoint/last index
+        graphics.gUpdates.addRectangle(bRight); //Add right border to graphics. Inserted at one index before the endPoint/last index
+        graphics.gUpdates.addRectangle(bLeft); //Add left border to graphics. Inserted at one index before the endPoint/last index
         
         //Run overarching program
         while (!isClosing)
@@ -97,7 +98,7 @@ public class MazeGame
             //If so, end game
         if (player.getPlayerRect().intersects(endPoint)) 
         { 
-            player.setPos(100, 100);
+            player.setPos(100, 100); //Reset player
         }
         updateCollisions(); //update collisions
     }

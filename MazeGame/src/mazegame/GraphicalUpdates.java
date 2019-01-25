@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GraphicalUpdates.java
  */
 package mazegame;
 
@@ -9,17 +7,17 @@ import java.awt.*;
 import java.awt.image.*;
 import java.util.ArrayList;
 
-/**
+/** Does graphical calculations and buffering then outputs to window
  *
  * @author Deprecator16
  */
 public class GraphicalUpdates extends Canvas implements Runnable
 {
-    private ArrayList<Rectangle> rects;
-    private Graphics output = null;
-    private BufferStrategy buffStrat = null;
+    private ArrayList<Rectangle> rects; //Arraylist of all drawn rectangles
+    private Graphics output = null; //Graphics component
+    private BufferStrategy buffStrat = null; //Used for double buffering
     
-    private Thread gThread;
+    private Thread gThread; //Graphics thread
     
     /** Begins the graphics thread and process
      * 
@@ -28,13 +26,14 @@ public class GraphicalUpdates extends Canvas implements Runnable
     @Override
     public void paint(Graphics g)
     {
+        //If double buffering has not been set yet
         if (buffStrat == null)
         {
-            this.createBufferStrategy(2);
-            buffStrat = this.getBufferStrategy();
-            output = buffStrat.getDrawGraphics();
+            this.createBufferStrategy(2); //Create double buffering strategy
+            buffStrat = this.getBufferStrategy(); //Set buffer strategy to classes strategy
+            output = buffStrat.getDrawGraphics(); //Set graphics component to buffer's graphics
             
-            gThread.start();
+            gThread.start(); //Start graphics thread
         }
     }
 
@@ -137,6 +136,15 @@ public class GraphicalUpdates extends Canvas implements Runnable
     public void removeRectangle(int indexOfRect)
     {
         rects.remove(indexOfRect);
+    }
+    
+    /** Adds the player rectangle
+     * 
+     * @param rect player rectangle
+     */
+    public void addPlayer(Rectangle rect)
+    {
+        rects.add(rect);
     }
     
     /** Adds the position of the endpoint of the maze

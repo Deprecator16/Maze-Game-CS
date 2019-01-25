@@ -1,14 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GUI.java
  */
 package mazegame;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-/**
+/** Contains all user controls
  *
  * @author Team Lime
  */
