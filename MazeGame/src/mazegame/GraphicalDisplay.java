@@ -23,8 +23,8 @@ public class GraphicalDisplay extends JFrame
         super();
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Set operation on closing program
-        this.setSize(406, 428); //Set window size
-        this.setResizable(false); //Make sure window is not resized by user
+        this.setSize(450, 450); //Set window size
+        //this.setResizable(false); //Make sure window is not resized by user
         this.setTitle("A Random Maze Game"); //Set title of window
         this.setVisible(true); //Show window
         
