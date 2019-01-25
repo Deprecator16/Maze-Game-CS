@@ -95,7 +95,7 @@ public class MazeGame
         }
         
         //Check if player is at end
-            //If so, end game
+            //If so, reset game
         if (player.getPlayerRect().intersects(endPoint)) 
         { 
             player.setPos(100, 100); //Reset player
